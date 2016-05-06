@@ -29,6 +29,11 @@ void Customer::addRental(const Rental& rental) {
     rentals.push_back(rental);
 }
 
+//Calculates amount for current statement
+	double amountFor(const Rental& r) const{
+		return 0;
+	}
+
 // customer rental statement
 std::string Customer::statement() const {
 
