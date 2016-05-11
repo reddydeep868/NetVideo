@@ -53,10 +53,6 @@ void Customer::addRental(const Rental& rental) {
 		return thisAmount;
 	}
 
-// customer rental statement
-std::string Customer::statement() const {
-rentalStatement();
-}
 
 std::string Customer::rentalStatement() const {
 
