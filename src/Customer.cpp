@@ -55,57 +55,7 @@ void Customer::addRental(const Rental& rental) {
 
 // customer rental statement
 std::string Customer::statement() const {
-
-    // customer name
-    std::string result("Rental Record for ");
-    result += getName();
-    result += "\n";
-
-    // rentals
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    for (std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
-
-        // every rental is a rental point
-        ++frequentRenterPoints;
-
-        // new releases rented for more then one day gives a bonus rental point
-        if (it->getVideo().getCode() == Video::NEW_RELEASE &&
-            it->getDaysRented() > 1 )
-            ++frequentRenterPoints;
-
-        // title of rental
-        result += "\t";
-        result += it->getVideo().getTitle();
-        result += "\t";
-
-        double thisAmount = 0;
-        thisAmount = amountFor(*it);
-
-        // amount of rental
-        std::ostringstream out_str_stream;
-        out_str_stream << thisAmount;
-        result += out_str_stream.str();
-        result += "\n";
-
-        totalAmount += thisAmount;
-    }
-
-    // total amount owed
-    result += "Amount owed is: ";
-    std::ostringstream out_str_stream;
-    out_str_stream << totalAmount;
-    result += out_str_stream.str();
-    result += "\n";
-
-    // frequent renter points earned
-    result += "You earned: ";
-    std::ostringstream out_str_stream2;
-    out_str_stream2 << frequentRenterPoints;
-    result += out_str_stream2.str();
-    result += " frequent renter points\n";
-
-    return result;
+rentalStatement();
 }
 
 std::string Customer::rentalStatement() const {
